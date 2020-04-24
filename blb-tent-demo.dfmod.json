@@ -1,0 +1,24 @@
+{
+    "ModTitle": "BLB Tent Demo",
+    "ModVersion": "0.1",
+    "ModAuthor": "BadLuckBurt",
+    "ContactInfo": "x",
+    "DFUnity_Version": "0.10.22",
+    "ModDescription": "Tent demo",
+    "GUID": "3c57e3f4-d22a-42ff-a31f-4711b389cc9f",
+    "Files": [
+        "Assets/Game/Mods/blb-tent-demo/ItemTemplates.json",
+        "Assets/Game/Mods/blb-tent-demo/BLB_Tent_Demo.cs",
+        "Assets/Game/Mods/blb-tent-demo/Materials/67_10-0.mat",
+        "Assets/Game/Mods/blb-tent-demo/Materials/50_7-0.mat",
+        "Assets/Game/Mods/blb-tent-demo/Materials/515_0-0.mat",
+        "Assets/Game/Mods/blb-tent-demo/Models/41606.prefab",
+        "Assets/Game/Mods/blb-tent-demo/Textures/515_0-0.png",
+        "Assets/Game/Mods/blb-tent-demo/Textures/50_7-0.PNG",
+        "Assets/Game/Mods/blb-tent-demo/Textures/67_10-0.PNG",
+        "Assets/Game/Mods/blb-tent-demo/Textures/buttonREST.png",
+        "Assets/Game/Mods/blb-tent-demo/Textures/buttonPACKUPTENT.png"
+    ],
+    "Contributes": null,
+    "Dependencies": null
+}
