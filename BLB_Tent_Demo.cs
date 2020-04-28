@@ -118,19 +118,26 @@ namespace BLB.TentDemo
             }
         }
 
+        private static void SetTentPositionAndRotation() {
+            GameObject player = GameManager.Instance.PlayerObject;
+            TentPosition = player.transform.position + (player.transform.forward * 3);
+            TentMatrix = player.transform.localToWorldMatrix;
+
+            RaycastHit hit;
+            Ray ray = new Ray(TentPosition, Vector3.down);
+            if (Physics.Raycast(ray, out hit, 10)) {
+                Debug.Log("Setting tent position and rotation");
+                TentPosition = hit.point;
+                TentRotation = Quaternion.FromToRotation (Vector3.up, hit.normal);
+            } else {
+                Debug.Log("Setting tent position and rotation failed");
+            }
+        }
+
         private static void DeployTent(bool fromSave = false) {
             if(fromSave == false) {
                 TentMapPixel = GameManager.Instance.PlayerGPS.CurrentMapPixel;
-
-                GameObject player = GameManager.Instance.PlayerObject;
-                PlayerMotor playerMotor = player.GetComponent<PlayerMotor>();
-                // Find ground position below player
-                TentPosition = playerMotor.FindGroundPosition();
-
-                //Calculate / retrieve tent position, rotation and facing direction
-                TentPosition = TentPosition + (player.transform.forward * 3);
-                TentRotation = player.transform.rotation;
-                TentMatrix = player.transform.localToWorldMatrix;
+                SetTentPositionAndRotation();
             }
             //Attempt to load a model replacement
             Tent = MeshReplacement.ImportCustomGameobject(tentModelID, null, TentMatrix);
