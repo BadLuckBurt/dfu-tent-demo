@@ -75,6 +75,8 @@ namespace BLB.TentDemo
 
             if(TentDeployed) {
                 DeployTent(true);
+            } else {
+                DestroyTent();
             }
         }
 
@@ -96,7 +98,7 @@ namespace BLB.TentDemo
 
             Debug.Log("Started setup of : " + mod.Title);
 
-            DaggerfallUnity.Instance.ItemHelper.RegisterItemUseHander(templateIndex_Tent, UseTent);
+            DaggerfallUnity.Instance.ItemHelper.RegisterItemUseHandler(templateIndex_Tent, UseTent);
             DaggerfallUnity.Instance.ItemHelper.RegisterCustomItem(templateIndex_Tent, ItemGroups.UselessItems2);
             PlayerActivate.RegisterCustomActivation(mod, 41606, PackUpTent);
 
@@ -184,11 +186,17 @@ namespace BLB.TentDemo
                 IUserInterfaceManager uiManager = DaggerfallUI.UIManager;
                 uiManager.PushWindow(new DaggerfallRestWindow(uiManager, true));
             } else if (messageBoxButton == "PACKUPTENT") {
-                Destroy(Tent);
-                Tent = null;
+                DestroyTent();
                 TentDeployed = false;
                 TentMatrix = new Matrix4x4();
                 sender.CloseWindow();
+            }
+        }
+
+        static void DestroyTent() {
+            if(Tent != null) {
+                Destroy(Tent);
+                Tent = null;
             }
         }
 
