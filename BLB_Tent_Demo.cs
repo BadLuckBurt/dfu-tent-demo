@@ -73,10 +73,9 @@ namespace BLB.TentDemo
             TentRotation = tentDemoSaveData.TentRotation;
             TentMatrix = tentDemoSaveData.TentMatrix;
 
+            DestroyTent();
             if(TentDeployed) {
-                DeployTent(true);
-            } else {
-                DestroyTent();
+                DeployTent(true);    
             }
         }
 
